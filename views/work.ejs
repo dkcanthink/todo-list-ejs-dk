@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+<section id="header">
+    <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> -->
+          <span class="fs-4 nanum">To-do List | David Admana 🦇</span>
+        </a>
+  
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="/" class="nav-link nanum">Today</a></li>
+            <li class="nav-item"><a href="/personal" class="nav-link nanum">Personal</a></li>
+            <li class="nav-item"><a href="/work" class="nav-link active nanum" aria-current="page">Work</a></li>
+      </header>
+    </div>
+</section>
+
+<section id="heading">
+    <div class="container"><h1 class="nanum box">Work List</h1></div>
+</section>
+
+<section>
+  <div class="container">
+
+  <ul id="todo-list">
+      <% workTodos.forEach(todo => { %>
+          <li class="nanum">
+              <input type="checkbox" class="todo-checkbox">
+              <input type="text" class="todo-input" value="<%= todo %>" readonly>
+          </li>
+      <% }); %>
+
+      <form id="todo-form" method="post" action="/work/add">
+        <input type="text" id="todo-input" name="todo" placeholder="New Item">
+        <input type="hidden" name="listType" value="work">
+        <button type="submit" id="add-button">➕</button>
+    </form>
+  </ul>
+
+  </div>
+</section>
+
+<%- include("partials/footer.ejs") %>
